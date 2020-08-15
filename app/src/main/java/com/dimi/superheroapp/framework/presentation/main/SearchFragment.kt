@@ -67,8 +67,7 @@ constructor(
                         )
                     }
                     submitList(
-                        superHeroList = viewState.superHeroList,
-                        isQueryExhausted = false
+                        superHeroList = viewState.superHeroList
                     )
                 }
                 viewState.superHeroList?.let { superHeroList ->
