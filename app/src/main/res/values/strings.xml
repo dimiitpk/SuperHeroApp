@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SuperHeroApp</string>
+
+    <string name="text_error">Error</string>
+    <string name="text_success">Success</string>
+    <string name="text_ok">OK</string>
+    <string name="text_info">Info</string>
+
+
+    <string name="search">Search</string>
+
+    <string name="intelligence">intelligence</string>
+    <string name="strength">strength</string>
+    <string name="speed">speed</string>
+    <string name="durability">durability</string>
+    <string name="power">power</string>
+    <string name="combat">combat</string>
+    <string name="more_info">more info</string>
+    <string name="aliases">Aliases</string>
+    <string name="theme_mode_text">Use this button\nto switch theme mode.\nLight to Dark and reverse.</string>
+    <string name="search_box_info">Use search box to view more detailed\ninformation about any superhero.</string>
+    <string name="biography">Biography</string>
+    <string name="todo">TODO</string>
+</resources>
