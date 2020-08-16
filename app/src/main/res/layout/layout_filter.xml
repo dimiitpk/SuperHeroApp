@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/filter_options"
-        android:textColor="@color/colorPrimaryText"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimary"
         android:textSize="22sp" />
 
     <RadioGroup
@@ -23,26 +24,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
             android:text="@string/filter_name_or_strength"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/filter_name"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/chewy"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/filter_name"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/filter_strength"
+            android:fontFamily="@font/chewy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="@string/filter_strength"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
     </RadioGroup>
@@ -58,27 +60,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
             android:text="@string/filter_asc_desc"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
 
         <RadioButton
             android:id="@+id/filter_asc"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/chewy"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/filter_asc"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/filter_desc"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/chewy"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/filter_desc"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp" />
 
     </RadioGroup>
@@ -95,6 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
+            android:fontFamily="@font/chewy"
             android:text="@string/text_cancel"
             android:textColor="@color/colorPrimaryText"
             android:textSize="16sp"/>
@@ -102,6 +108,7 @@
         <TextView
             android:id="@+id/positive_button"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/chewy"
             android:layout_height="wrap_content"
             android:text="@string/text_apply"
             android:textColor="@color/colorPrimaryDark"

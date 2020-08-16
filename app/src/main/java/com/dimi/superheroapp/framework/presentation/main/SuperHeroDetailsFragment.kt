@@ -61,10 +61,6 @@ constructor(
         })
     }
 
-    private fun calculateProgressBarDurability(value: Int): Long {
-        return ((value * 100) / 3).toLong()
-    }
-
     private fun setSuperHeroProperties(superHero: SuperHero) {
 
         requestManager.load(superHero.image).into(image)
@@ -72,70 +68,14 @@ constructor(
         name.text = superHero.name
         full_name.text = superHero.fullName
 
-        val sbNames = StringBuilder()
-        sbNames.append("Publisher:")
-        sbNames.append("\n")
-        sbNames.append("Place of birth:")
-        sbNames.append("\n")
-        sbNames.append("First appearance:")
-        sbNames.append("\n")
-        sbNames.append("Aliases:")
+        setupBiographyProperties( superHero )
 
-        val sbValues = StringBuilder()
-        sbValues.append(superHero.getValidPublisher())
-        sbValues.append("\n")
-        sbValues.append(superHero.getValidPlaceOfBirth())
-        sbValues.append("\n")
-        sbValues.append(superHero.getValidFirstAppearance())
-        sbValues.append("\n")
-        sbValues.append(superHero.getValidAliases())
-
-        biography_name.text = sbNames
-        biography_value.text = sbValues
-
-
-        durability_value.text = superHero.durability.toString()
-        speed_value.text = superHero.speed.toString()
-        intelligence_value.text = superHero.intelligence.toString()
-        combat_value.text = superHero.combat.toString()
-        power_value.text = superHero.power.toString()
-        strength_value.text = superHero.strength.toString()
-        progress_bar_durability.apply {
-            setProgressWithAnimation(
-                superHero.durability.toFloat(),
-                calculateProgressBarDurability(superHero.durability)
-            )
-        }
-        progress_bar_combat.apply {
-            setProgressWithAnimation(
-                superHero.combat.toFloat(),
-                calculateProgressBarDurability(superHero.combat)
-            )
-        }
-        progress_bar_intelligence.apply {
-            setProgressWithAnimation(
-                superHero.intelligence.toFloat(),
-                calculateProgressBarDurability(superHero.intelligence)
-            )
-        }
-        progress_bar_power.apply {
-            setProgressWithAnimation(
-                superHero.power.toFloat(),
-                calculateProgressBarDurability(superHero.power)
-            )
-        }
-        progress_bar_speed.apply {
-            setProgressWithAnimation(
-                superHero.speed.toFloat(),
-                calculateProgressBarDurability(superHero.speed)
-            )
-        }
-        progress_bar_strength.apply {
-            setProgressWithAnimation(
-                superHero.strength.toFloat(),
-                calculateProgressBarDurability(superHero.strength)
-            )
-        }
+        setupDurabilityProperties( superHero.durability )
+        setupSpeedProperties( superHero.speed )
+        setupCombatProperties( superHero.combat )
+        setupIntelligenceProperties( superHero.intelligence )
+        setupStrengthProperties( superHero.strength )
+        setupPowerProperties( superHero.power )
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

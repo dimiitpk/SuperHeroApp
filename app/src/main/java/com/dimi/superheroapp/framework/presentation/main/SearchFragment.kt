@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -15,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
@@ -25,10 +27,12 @@ import com.dimi.superheroapp.R
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
 import com.dimi.superheroapp.business.interactors.SearchSuperHeroes.Companion.SEARCH_SUPERHEROES_SUCCESSFUL
-import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_STRENGTH
 import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_NAME
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_STRENGTH
 import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_ASC
 import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_DESC
+import com.dimi.superheroapp.framework.presentation.common.fadeIn
+import com.dimi.superheroapp.framework.presentation.common.fadeOut
 import com.dimi.superheroapp.framework.presentation.common.gone
 import com.dimi.superheroapp.framework.presentation.common.visible
 import com.dimi.superheroapp.framework.presentation.main.state.MainStateEvent
@@ -61,6 +65,11 @@ constructor(
         swipe_refresh.setOnRefreshListener(this)
         initRecyclerView()
         subscribeObservers()
+
+        pop_up_top_button.setOnClickListener {
+            resetUI()
+            uiController.expandAppBar()
+        }
     }
 
     private fun subscribeObservers() {
@@ -80,11 +89,10 @@ constructor(
                     )
                 }
                 viewState.superHeroList?.let { superHeroList ->
-                    if( superHeroList.isEmpty() ) {
+                    if (superHeroList.isEmpty()) {
                         info_text_container.visible()
                         swipe_refresh.gone()
-                    }
-                    else {
+                    } else {
                         info_text_container.gone()
                         swipe_refresh.visible()
                     }
@@ -99,10 +107,9 @@ constructor(
         viewModel.stateMessage.observe(viewLifecycleOwner, Observer { stateMessage ->
             stateMessage?.let { message ->
 
-                if(message.response.message == SEARCH_SUPERHEROES_SUCCESSFUL) {
+                if (message.response.message == SEARCH_SUPERHEROES_SUCCESSFUL) {
                     viewModel.clearStateMessage()
-                }
-                else {
+                } else {
                     uiController.onResponseReceived(
                         response = message.response,
                         stateMessageCallback = object : StateMessageCallback {
@@ -121,7 +128,7 @@ constructor(
 
         recycler_view.apply {
 
-            layoutManager = LinearLayoutManager( context, RecyclerView.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             val spaceDecoration = SpacesItemDecoration(15)
             removeItemDecoration(spaceDecoration)
             addItemDecoration(spaceDecoration)
@@ -130,6 +137,18 @@ constructor(
                     requestManager,
                     this@SearchFragment
                 )
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    val firstPosition = layoutManager.findFirstVisibleItemPosition()
+                    if (firstPosition > 2) {
+                        pop_up_top_button.fadeIn()
+                    } else {
+                        pop_up_top_button.fadeOut()
+                    }
+                }
+            })
             adapter = recyclerAdapter
         }
     }
@@ -145,7 +164,7 @@ constructor(
     }
 
     private fun onSearchQuery() {
-        if( viewModel.getSearchQuery().isNotBlank() && viewModel.getSearchQuery().length >= 2) {
+        if (viewModel.getSearchQuery().isNotBlank() && viewModel.getSearchQuery().length >= 2) {
             viewModel.setStateEvent(MainStateEvent.SearchHeroes()).let {
                 resetUI()
             }
@@ -159,13 +178,15 @@ constructor(
     }
 
     override fun onItemSelected(position: Int, item: SuperHero) {
-        viewModel.setClickedSuperHero( item )
+        viewModel.setClickedSuperHero(item)
         findNavController().navigate(R.id.action_searchFragment_to_superHeroDetailsFragment)
     }
 
     override fun onResume() {
         super.onResume()
-        if( viewModel.getSearchQuery().isNotBlank() && viewModel.getSuperHeroList().isNullOrEmpty()) {
+        if (viewModel.getSearchQuery().isNotBlank() && viewModel.getSuperHeroList()
+                .isNullOrEmpty()
+        ) {
             viewModel.setStateEvent(MainStateEvent.SearchHeroes(clearLayoutManagerState = false))
         }
     }
@@ -196,8 +217,7 @@ constructor(
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             uiController.changeThemeMode()
-        }
-        else if( item.itemId == R.id.action_filter_settings ) {
+        } else if (item.itemId == R.id.action_filter_settings) {
             showFilterDialog()
         }
         return super.onOptionsItemSelected(item)
@@ -241,16 +261,15 @@ constructor(
 
     private fun handleSearchConfirmed(searchQuery: String) {
 
-        if( searchQuery.length < 2 ) {
+        if (searchQuery.length < 2) {
             viewModel.createShortSearchQueryMessage()
-        }
-        else {
+        } else {
             viewModel.setQuery(searchQuery)
             onSearchQuery()
         }
     }
 
-    private fun showFilterDialog(){
+    private fun showFilterDialog() {
 
         activity?.let {
             val dialog = MaterialDialog(it)
