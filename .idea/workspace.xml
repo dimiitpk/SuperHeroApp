@@ -21,9 +21,20 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745228fa-3dcd-49ed-8198-c0ad1652913e" name="Default Changelist" comment="Assignment done - update&#10; - fab button -&gt; scroll recyclerview up&#10; - minor changes">
+    <list default="true" id="745228fa-3dcd-49ed-8198-c0ad1652913e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SuperHeroDetailsExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SuperHeroDetailsExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" afterDir="false" />
     </list>
     <list id="f3e86660-94dc-4148-985e-55758f15985e" name="Revert &quot;Assigment done&quot;" comment="Revert &quot;Assigment done&quot;&#10;&#10;This reverts commit a328095f" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +42,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_23_2" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="HYF0218927006380" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -249,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597573476650</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Assignment done - update&#10; - details fragments - landscape view">
+      <created>1597577472936</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597577472936</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,7 +291,8 @@
     <MESSAGE value="Assignment done" />
     <MESSAGE value="Assignment done&#10; - added cache with room &#10; - filtering queries" />
     <MESSAGE value="Assignment done - update&#10; - fab button -&gt; scroll recyclerview up&#10; - minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment done - update&#10; - fab button -&gt; scroll recyclerview up&#10; - minor changes" />
+    <MESSAGE value="Assignment done - update&#10; - details fragments - landscape view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Assignment done - update&#10; - details fragments - landscape view" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Notifications" timestamp="1597519745775">
@@ -320,10 +339,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="818" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597538369460" />
-    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597577444349">
+    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597577469514">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577444349" />
+    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577469514" />
     <state x="875" y="293" key="Downloadable.Font.Dialog.Size" timestamp="1597445340090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -360,10 +379,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597521490038" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597573488425">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597577483803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597573488425" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577483803" />
     <state x="776" y="298" key="chooseDestDirectoryDialog" timestamp="1597410183519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
