@@ -37,7 +37,29 @@
             app:tint="@color/colorPrimaryText"
             android:contentDescription="@string/todo" />
 
+        <ImageView
+            app:layout_constraintStart_toStartOf="@+id/filter_text"
+            app:layout_constraintEnd_toEndOf="@+id/filter_text"
+            app:layout_constraintBottom_toTopOf="@+id/filter_text"
+            android:src="@drawable/filter_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo" />
+
         <TextView
+            android:id="@+id/filter_text"
+            android:text="@string/filter_info_text"
+            android:textSize="18sp"
+            android:fontFamily="@font/chewy"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mode_text"
+            app:layout_constraintBottom_toTopOf="@+id/search_box_text"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/search_box_text"
             android:text="@string/search_box_info"
             android:textSize="18sp"
             android:gravity="center"
@@ -56,6 +78,7 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <androidx.recyclerview.widget.RecyclerView

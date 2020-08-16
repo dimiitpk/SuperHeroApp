@@ -10,7 +10,9 @@ class NetworkDataSourceImpl
     private val mainApiService: MainApiService
 ) : NetworkDataSource {
 
-    override suspend fun searchSuperHeroes(query: String): SearchResponse {
+    override suspend fun searchSuperHeroes(
+        query: String
+    ): SearchResponse {
         return mainApiService.searchSuperHeroes(query)
     }
 }

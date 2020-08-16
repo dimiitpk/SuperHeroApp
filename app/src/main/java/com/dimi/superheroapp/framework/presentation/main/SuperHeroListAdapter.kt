@@ -3,14 +3,23 @@ package com.dimi.superheroapp.framework.presentation.main
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.graphics.drawable.RoundedBitmapDrawable
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.recyclerview.widget.*
+import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
 import com.dimi.superheroapp.R
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import kotlinx.android.synthetic.main.layout_superhero_list_item.view.*
@@ -132,9 +141,8 @@ class SuperHeroListAdapter(
 
             requestManager
                 .load(item.image)
-                .circleCrop()
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .into(itemView.image)
+                .into(image)
 
             itemView.name.text = item.name
             itemView.full_name.text = item.fullName

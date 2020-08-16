@@ -1,14 +1,18 @@
 package com.dimi.superheroapp.business.data.util
 
+import com.dimi.superheroapp.business.data.cache.CacheConstants.CACHE_TIMEOUT
+import com.dimi.superheroapp.business.data.cache.CacheErrors.CACHE_ERROR_TIMEOUT
+import com.dimi.superheroapp.business.data.cache.CacheErrors.CACHE_ERROR_UNKNOWN
+import com.dimi.superheroapp.business.data.cache.CacheResult
 import com.dimi.superheroapp.business.data.network.ApiResult
 import com.dimi.superheroapp.business.data.network.NetworkConstants.NETWORK_TIMEOUT
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR_TIMEOUT
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR_UNKNOWN
+import com.dimi.superheroapp.business.domain.state.*
 import com.dimi.superheroapp.util.GenericErrors.ERROR_UNKNOWN
 import kotlinx.coroutines.*
 import retrofit2.HttpException
 import java.io.IOException
-
 
 suspend fun <T> safeApiCall(
     dispatcher: CoroutineDispatcher,
@@ -16,7 +20,7 @@ suspend fun <T> safeApiCall(
 ): ApiResult<T?> {
     return withContext(dispatcher) {
         try {
-            withTimeout(NETWORK_TIMEOUT){
+            withTimeout(NETWORK_TIMEOUT) {
                 ApiResult.Success(apiCall.invoke())
             }
         } catch (throwable: Throwable) {
@@ -51,12 +55,51 @@ suspend fun <T> safeApiCall(
 }
 
 
+suspend fun <T> safeCacheCall(
+    dispatcher: CoroutineDispatcher,
+    cacheCall: suspend () -> T?
+): CacheResult<T?> {
+    return withContext(dispatcher) {
+        try {
+            withTimeout(CACHE_TIMEOUT) {
+                CacheResult.Success(cacheCall.invoke())
+            }
+        } catch (throwable: Throwable) {
+            throwable.printStackTrace()
+            when (throwable) {
+
+                is TimeoutCancellationException -> {
+                    CacheResult.GenericError(CACHE_ERROR_TIMEOUT)
+                }
+                else -> {
+                    CacheResult.GenericError(CACHE_ERROR_UNKNOWN)
+                }
+            }
+        }
+    }
+}
+
 private fun convertErrorBody(throwable: HttpException): String? {
     return try {
         throwable.response()?.errorBody()?.string()
     } catch (exception: Exception) {
         ERROR_UNKNOWN
     }
+}
+
+fun <ViewState> buildError(
+    message: String,
+    uiComponentType: UIComponentType,
+    stateEvent: StateEvent?
+): DataState<ViewState> {
+    return DataState.error(
+        response = Response(
+            message = "${stateEvent?.errorInfo()}\n\nReason: $message",
+            uiComponentType = uiComponentType,
+            messageType = MessageType.Error()
+        ),
+        stateEvent = stateEvent
+    )
 }
 
 

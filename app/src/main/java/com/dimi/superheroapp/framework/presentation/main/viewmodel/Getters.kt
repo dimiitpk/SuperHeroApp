@@ -2,6 +2,9 @@ package com.dimi.superheroapp.framework.presentation.main.viewmodel
 
 import android.os.Parcelable
 import com.dimi.superheroapp.business.domain.model.SuperHero
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_NAME
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_ASC
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_DESC
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
@@ -16,6 +19,20 @@ fun MainViewModel.getSearchQuery(): String {
 @ExperimentalCoroutinesApi
 fun MainViewModel.getSuperHeroList(): ArrayList<SuperHero>? {
     return getCurrentViewStateOrNew().superHeroList
+}
+
+@FlowPreview
+@ExperimentalCoroutinesApi
+fun MainViewModel.getFilter(): String {
+    return getCurrentViewStateOrNew().filter
+        ?: QUERY_FILTER_NAME
+}
+
+@FlowPreview
+@ExperimentalCoroutinesApi
+fun MainViewModel.getOrder(): String {
+    return getCurrentViewStateOrNew().order
+        ?: QUERY_ORDER_DESC
 }
 
 @FlowPreview

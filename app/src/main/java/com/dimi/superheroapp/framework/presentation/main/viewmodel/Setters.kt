@@ -8,7 +8,7 @@ import kotlinx.coroutines.FlowPreview
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-fun MainViewModel.setMovieList( list: ArrayList<SuperHero>) {
+fun MainViewModel.setMovieList(list: ArrayList<SuperHero>) {
     val update = getCurrentViewStateOrNew()
     update.superHeroList = list
     setViewState(update)
@@ -16,7 +16,7 @@ fun MainViewModel.setMovieList( list: ArrayList<SuperHero>) {
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-fun MainViewModel.setQuery(query: String){
+fun MainViewModel.setQuery(query: String) {
     val update = getCurrentViewStateOrNew()
     update.searchQuery = query
     setViewState(update)
@@ -24,7 +24,25 @@ fun MainViewModel.setQuery(query: String){
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-fun MainViewModel.setClickedSuperHero( superHero: SuperHero) {
+fun MainViewModel.setFilter(filter: String?) {
+
+    val update = getCurrentViewStateOrNew()
+    update.filter = filter
+    setViewState(update)
+}
+
+@FlowPreview
+@ExperimentalCoroutinesApi
+fun MainViewModel.setOrder(order: String?) {
+
+    val update = getCurrentViewStateOrNew()
+    update.order = order
+    setViewState(update)
+}
+
+@FlowPreview
+@ExperimentalCoroutinesApi
+fun MainViewModel.setClickedSuperHero(superHero: SuperHero) {
     val update = getCurrentViewStateOrNew()
     update.superHeroDetail = superHero
     setViewState(update)
@@ -32,7 +50,7 @@ fun MainViewModel.setClickedSuperHero( superHero: SuperHero) {
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-fun MainViewModel.setLayoutManagerState(layoutManagerState: Parcelable){
+fun MainViewModel.setLayoutManagerState(layoutManagerState: Parcelable) {
     val update = getCurrentViewStateOrNew()
     update.layoutManagerState = layoutManagerState
     setViewState(update)
@@ -40,7 +58,7 @@ fun MainViewModel.setLayoutManagerState(layoutManagerState: Parcelable){
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-fun MainViewModel.clearLayoutManagerState(){
+fun MainViewModel.clearLayoutManagerState() {
     val update = getCurrentViewStateOrNew()
     update.layoutManagerState = null
     setViewState(update)

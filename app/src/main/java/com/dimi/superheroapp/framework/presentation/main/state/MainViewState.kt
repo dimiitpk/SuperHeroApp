@@ -12,6 +12,8 @@ data class MainViewState (
     var superHeroList: ArrayList<SuperHero>? = null,
     var searchQuery: String? = null,
     var layoutManagerState: Parcelable? = null,
-    var superHeroDetail: SuperHero? = null
+    var superHeroDetail: SuperHero? = null,
+    var filter: String? = null,
+    var order: String? = null
 
 ): Parcelable

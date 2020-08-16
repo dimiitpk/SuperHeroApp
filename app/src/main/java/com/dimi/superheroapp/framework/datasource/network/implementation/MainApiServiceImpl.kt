@@ -9,7 +9,9 @@ class MainApiServiceImpl(
     private val mainApi: MainApi
 ) : MainApiService {
 
-    override suspend fun searchSuperHeroes(query: String): SearchResponse {
+    override suspend fun searchSuperHeroes(
+        query: String
+    ): SearchResponse {
         return mainApi.searchSuperHeroes(query)
     }
 }

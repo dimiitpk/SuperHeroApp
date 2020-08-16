@@ -5,6 +5,8 @@
     <string name="text_success">Success</string>
     <string name="text_ok">OK</string>
     <string name="text_info">Info</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_apply">Apply</string>
 
 
     <string name="search">Search</string>
@@ -21,4 +23,15 @@
     <string name="search_box_info">Use search box to view more detailed\ninformation about any superhero.</string>
     <string name="biography">Biography</string>
     <string name="todo">TODO</string>
+
+
+    <string name="filter">Filter</string>
+    <string name="filter_options">Filter options</string>
+    <string name="filter_asc">ASC</string>
+    <string name="filter_desc">DESC</string>
+    <string name="filter_name">Name</string>
+    <string name="filter_strength">Strength</string>
+    <string name="filter_name_or_strength">Filter by name or strength</string>
+    <string name="filter_asc_desc">Ascending or descending order</string>
+    <string name="filter_info_text">Use this icon to filter your query.</string>
 </resources>

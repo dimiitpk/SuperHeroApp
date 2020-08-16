@@ -9,17 +9,26 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.RadioGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.*
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.bumptech.glide.RequestManager
 import com.dimi.superheroapp.R
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
 import com.dimi.superheroapp.business.interactors.SearchSuperHeroes.Companion.SEARCH_SUPERHEROES_SUCCESSFUL
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_STRENGTH
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_FILTER_NAME
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_ASC
+import com.dimi.superheroapp.framework.datasource.cache.database.QUERY_ORDER_DESC
 import com.dimi.superheroapp.framework.presentation.common.gone
 import com.dimi.superheroapp.framework.presentation.common.visible
 import com.dimi.superheroapp.framework.presentation.main.state.MainStateEvent
@@ -136,8 +145,10 @@ constructor(
     }
 
     private fun onSearchQuery() {
-        viewModel.setStateEvent(MainStateEvent.SearchHeroes()).let {
-            resetUI()
+        if( viewModel.getSearchQuery().isNotBlank() && viewModel.getSearchQuery().length >= 2) {
+            viewModel.setStateEvent(MainStateEvent.SearchHeroes()).let {
+                resetUI()
+            }
         }
     }
 
@@ -186,6 +197,9 @@ constructor(
         if (item.itemId == android.R.id.home) {
             uiController.changeThemeMode()
         }
+        else if( item.itemId == R.id.action_filter_settings ) {
+            showFilterDialog()
+        }
         return super.onOptionsItemSelected(item)
     }
 
@@ -233,6 +247,66 @@ constructor(
         else {
             viewModel.setQuery(searchQuery)
             onSearchQuery()
+        }
+    }
+
+    private fun showFilterDialog(){
+
+        activity?.let {
+            val dialog = MaterialDialog(it)
+                .noAutoDismiss()
+                .customView(R.layout.layout_filter)
+
+            val view = dialog.getCustomView()
+
+            val filter = viewModel.getFilter()
+            val order = viewModel.getOrder()
+
+            view.findViewById<RadioGroup>(R.id.filter_group).apply {
+                when (filter) {
+                    QUERY_FILTER_STRENGTH -> check(R.id.filter_strength)
+                    QUERY_FILTER_NAME -> check(R.id.filter_name)
+                }
+            }
+
+            view.findViewById<RadioGroup>(R.id.order_group).apply {
+                when (order) {
+                    QUERY_ORDER_ASC -> check(R.id.filter_asc)
+                    QUERY_ORDER_DESC -> check(R.id.filter_desc)
+                }
+            }
+
+            view.findViewById<TextView>(R.id.positive_button).setOnClickListener {
+
+                val newFilter =
+                    when (view.findViewById<RadioGroup>(R.id.filter_group).checkedRadioButtonId) {
+                        R.id.filter_name -> QUERY_FILTER_NAME
+                        R.id.filter_strength -> QUERY_FILTER_STRENGTH
+                        else -> QUERY_FILTER_NAME
+                    }
+
+                val newOrder =
+                    when (view.findViewById<RadioGroup>(R.id.order_group).checkedRadioButtonId) {
+                        R.id.filter_desc -> QUERY_ORDER_DESC
+                        else -> QUERY_ORDER_ASC
+                    }
+
+                viewModel.apply {
+                    saveFilterOptions(newFilter, newOrder)
+                    setFilter(newFilter)
+                    setOrder(newOrder)
+                }
+
+                onSearchQuery()
+
+                dialog.dismiss()
+            }
+
+            view.findViewById<TextView>(R.id.negative_button).setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
         }
     }
 }

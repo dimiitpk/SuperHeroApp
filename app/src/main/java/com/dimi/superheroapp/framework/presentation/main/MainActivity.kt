@@ -35,12 +35,13 @@ class MainActivity : AppCompatActivity(), UIController {
     lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val themeMode = sharedPreferences.getInt(PreferenceKeys.THEME_MODE, -1)
+        val themeMode = applicationContext.getSharedPreferences(PreferenceKeys.APP_PREFERENCE, Context.MODE_PRIVATE).getInt(PreferenceKeys.THEME_MODE, -1)
         if( themeMode != -1 )
             AppCompatDelegate.setDefaultNightMode( themeMode )
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         setupActionBar()
     }
