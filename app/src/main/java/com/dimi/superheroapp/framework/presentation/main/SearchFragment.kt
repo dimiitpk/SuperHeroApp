@@ -246,7 +246,7 @@ constructor(
             if (actionId == EditorInfo.IME_ACTION_UNSPECIFIED
                 || actionId == EditorInfo.IME_ACTION_SEARCH
             ) {
-                val searchQuery = v.text.toString()
+                val searchQuery = v.text.trim().toString()
                 handleSearchConfirmed(searchQuery)
             }
             true
@@ -254,7 +254,7 @@ constructor(
 
         val searchButton = searchView.findViewById(R.id.search_go_btn) as View
         searchButton.setOnClickListener {
-            val searchQuery = searchPlate.text.toString()
+            val searchQuery = searchPlate.text.trim().toString()
             handleSearchConfirmed(searchQuery)
         }
     }

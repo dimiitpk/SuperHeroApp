@@ -27,14 +27,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SearchFragment.kt" afterDir="false" />
     </list>
     <list id="f3e86660-94dc-4148-985e-55758f15985e" name="Revert &quot;Assigment done&quot;" comment="Revert &quot;Assigment done&quot;&#10;&#10;This reverts commit a328095f" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +113,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="HYF0218927006380" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-16T11:29:04.694Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-16T11:37:14.923Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource" />
@@ -267,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597577472936</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Assignment done - update&#10; - details fragments - landscape view">
+      <created>1597577630562</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1597577630562</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -339,10 +341,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="818" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597538369460" />
-    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597577469514">
+    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597577626980">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577469514" />
+    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577626980" />
     <state x="875" y="293" key="Downloadable.Font.Dialog.Size" timestamp="1597445340090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -355,22 +357,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="828" y="414" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597521335014" />
-    <state width="1877" height="505" key="GridCell.Tab.0.bottom" timestamp="1597537889006">
+    <state width="1860" height="532" key="GridCell.Tab.0.bottom" timestamp="1597578068871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="505" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597537889006" />
-    <state width="1877" height="505" key="GridCell.Tab.0.center" timestamp="1597537889006">
+    <state width="1860" height="532" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
+    <state width="1860" height="532" key="GridCell.Tab.0.center" timestamp="1597578068871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="505" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597537889006" />
-    <state width="1877" height="505" key="GridCell.Tab.0.left" timestamp="1597537889006">
+    <state width="1860" height="532" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
+    <state width="1860" height="532" key="GridCell.Tab.0.left" timestamp="1597578068871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="505" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597537889006" />
-    <state width="1877" height="505" key="GridCell.Tab.0.right" timestamp="1597537889006">
+    <state width="1860" height="532" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
+    <state width="1860" height="532" key="GridCell.Tab.0.right" timestamp="1597578068871">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="505" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597537889006" />
+    <state width="1860" height="532" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
     <state x="298" y="0" key="ScreenshotViewer.Dimensions" timestamp="1597493530405">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -379,10 +381,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597521490038" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597577483803">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597577632950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577483803" />
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577632950" />
     <state x="776" y="298" key="chooseDestDirectoryDialog" timestamp="1597410183519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
