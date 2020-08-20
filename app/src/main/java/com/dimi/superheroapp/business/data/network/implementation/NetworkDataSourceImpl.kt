@@ -1,13 +1,10 @@
 package com.dimi.superheroapp.business.data.network.implementation
 
 import com.dimi.superheroapp.business.data.network.abstraction.NetworkDataSource
-import com.dimi.superheroapp.framework.datasource.network.abstraction.MainApiService
-import com.dimi.superheroapp.framework.datasource.network.responses.SearchResponse
-import javax.inject.Inject
+import com.dimi.superheroapp.business.data.network.responses.SearchResponse
 
-class NetworkDataSourceImpl
-@Inject constructor(
-    private val mainApiService: MainApiService
+class NetworkDataSourceImpl(
+    private val mainApiService: NetworkDataSource
 ) : NetworkDataSource {
 
     override suspend fun searchSuperHeroes(

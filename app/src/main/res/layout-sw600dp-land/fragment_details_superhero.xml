@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:gravity="center"
+    android:visibility="invisible"
+    android:id="@+id/details_fragment_container"
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/name">
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="150dp"
+        android:layout_height="240dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="0.2"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/default_image"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/intelligence_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/intelligence"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_intelligence"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_intelligence"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_intelligence" />
+
+    <TextView
+        android:id="@+id/intelligence_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_intelligence"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_intelligence"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_intelligence"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_intelligence" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_intelligence"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toStartOf="@+id/progress_bar_strength"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/strength_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/strength"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_strength"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_strength"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_strength" />
+
+    <TextView
+        android:id="@+id/strength_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_strength"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_strength"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_strength"
+        app:layout_constraintTop_toTopOf="@id/progress_bar_strength" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_strength"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toTopOf="@+id/progress_bar_combat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/speed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/speed"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_speed"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_speed"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_speed" />
+
+    <TextView
+        android:id="@+id/speed_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_speed"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_speed"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_speed"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_speed" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_speed"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toTopOf="@+id/combat_text"
+        app:layout_constraintEnd_toEndOf="@+id/combat_value"
+        app:layout_constraintStart_toStartOf="@+id/intelligence_value"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_intelligence" />
+
+    <TextView
+        android:id="@+id/combat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/combat"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_combat"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_combat"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_combat" />
+
+    <TextView
+        android:id="@+id/combat_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_combat"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_combat"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_combat"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_combat" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_combat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_intelligence"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_durability"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_durability"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_intelligence" />
+
+    <TextView
+        android:id="@+id/power_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/power"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_power"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_power"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_power" />
+
+    <TextView
+        android:id="@+id/power_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_power"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_power"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_power"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_power" />
+
+    <TextView
+        android:id="@+id/full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_power"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toTopOf="@+id/progress_bar_intelligence"
+        app:layout_constraintEnd_toStartOf="@+id/progress_bar_strength"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/durability_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/durability"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_durability"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_durability"
+        app:layout_constraintTop_toBottomOf="@+id/progress_bar_durability" />
+
+    <TextView
+        android:id="@+id/durability_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:textColor="@color/colorPrimaryText"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_durability"
+        app:layout_constraintEnd_toEndOf="@+id/progress_bar_durability"
+        app:layout_constraintStart_toStartOf="@+id/progress_bar_durability"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_durability" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/progress_bar_durability"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="10dp"
+        app:cpb_background_progressbar_color="@color/colorPrimaryLight"
+        app:cpb_background_progressbar_width="5dp"
+        app:cpb_indeterminate_mode="false"
+        app:cpb_progress_direction="to_right"
+        app:cpb_progressbar_color="@color/colorPrimaryDark"
+        app:cpb_progressbar_width="4dp"
+        app:cpb_round_border="true"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_power"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/progress_bar_strength"
+        app:layout_constraintTop_toTopOf="@+id/progress_bar_strength" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/biography"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_view"
+        app:layout_constraintStart_toStartOf="@+id/scroll_view" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speed_text">
+
+        <LinearLayout
+            android:id="@+id/container1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:padding="10dp"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/biography_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/chewy"
+                android:gravity="start"
+                android:lines="4"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/biography_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/chewy"
+                android:gravity="end"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

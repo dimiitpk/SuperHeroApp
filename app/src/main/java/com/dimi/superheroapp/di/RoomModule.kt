@@ -2,8 +2,8 @@ package com.dimi.superheroapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.dimi.superheroapp.framework.datasource.cache.database.AppDatabase
-import com.dimi.superheroapp.framework.datasource.cache.database.MainDao
+import com.dimi.superheroapp.framework.cache.database.AppDatabase
+import com.dimi.superheroapp.framework.cache.database.MainDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

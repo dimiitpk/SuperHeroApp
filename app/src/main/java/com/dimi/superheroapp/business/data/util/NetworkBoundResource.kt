@@ -4,10 +4,7 @@ package com.dimi.superheroapp.business.data.util
 import com.dimi.superheroapp.business.data.cache.CacheResponseHandler
 import com.dimi.superheroapp.business.data.network.ApiResult
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR
-import com.dimi.superheroapp.business.domain.state.DataState
-import com.dimi.superheroapp.business.domain.state.Response
-import com.dimi.superheroapp.business.domain.state.StateEvent
-import com.dimi.superheroapp.business.domain.state.UIComponentType
+import com.dimi.superheroapp.business.domain.state.*
 import com.dimi.superheroapp.util.GenericErrors.ERROR_UNKNOWN
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
@@ -23,7 +20,6 @@ constructor(
     private val apiCall: suspend () -> NetworkResponse?,
     private val cacheCall: suspend () -> CacheResponse?
 ) {
-    var noResults = false
 
     val result: Flow<DataState<ViewState>?> = flow {
 
@@ -96,7 +92,7 @@ constructor(
 
     abstract suspend fun updateCache(networkObject: NetworkResponse) : Response?
 
-    abstract fun handleCacheSuccess(resultObj: CacheResponse, cacheUpdateResponse: Response?, stateEvent: StateEvent?): DataState<ViewState> // make sure to return null for stateEvent
+    abstract fun handleCacheSuccess(resultObj: CacheResponse, cacheUpdateResponse: Response?, stateEvent: StateEvent?): DataState<ViewState>
 }
 
 

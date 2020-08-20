@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:gravity="center"
+    android:visibility="invisible"
+    android:id="@+id/details_fragment_container"
     android:orientation="horizontal"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +23,7 @@
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:alpha="0.2"
         android:background="@android:color/transparent"
@@ -311,7 +313,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/speed_text"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="@+id/image"
         app:layout_constraintStart_toEndOf="@+id/progress_bar_durability"
         app:layout_constraintTop_toBottomOf="@+id/full_name">
@@ -329,6 +331,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:lines="4"
                 android:fontFamily="@font/chewy"
                 android:gravity="start"
                 android:textColor="@android:color/white"

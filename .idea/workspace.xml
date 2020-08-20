@@ -16,20 +16,82 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ALALALAL" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ja sam string" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="745228fa-3dcd-49ed-8198-c0ad1652913e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/interactors/main/MainUseCases.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SearchFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/cache/abstraction/CacheDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/cache/abstraction/CacheDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/cache/implementation/CacheDataSourceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/cache/implementation/CacheDataSourceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/network/abstraction/NetworkDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/network/abstraction/NetworkDataSource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/network/implementation/NetworkDataSourceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/network/implementation/NetworkDataSourceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/util/NetworkBoundResource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/util/NetworkBoundResource.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/util/RepositoryExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/data/util/RepositoryExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/domain/model/SuperHero.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/domain/model/SuperHero.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/interactors/SearchSuperHeroes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/interactors/main/SearchSuperHeroes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/business/interactors/UseCases.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/AppModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/RetrofitModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/RetrofitModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/RoomModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/di/RoomModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/BaseApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/BaseApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/PreferenceKeys.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/util/PreferenceKeys.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/abstraction/MainDaoService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/database/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/cache/database/AppDatabase.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/database/MainDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/cache/database/MainDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/implementation/MainDaoServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/cache/implementation/MainDaoServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/mappers/CacheMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/cache/mappers/CacheMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/cache/model/SuperHeroCacheEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/cache/model/SuperHeroCacheEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/NetworkConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/NetworkConstants.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/abstraction/MainApiService.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/api/MainApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/api/MainApi.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/implementation/MainApiServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/implementation/MainApiServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/mappers/NetworkMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/mappers/NetworkMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/model/SuperHeroNetworkEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/model/SuperHeroNetworkEntity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/responses/BiographyResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/responses/BiographyResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/responses/ImageResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/responses/ImageResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/responses/PowerStatsResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/responses/PowerStatsResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource/network/responses/SearchResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/network/responses/NetworkSearchResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/common/BaseViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/common/BaseViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/common/ViewExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/common/ViewExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/BaseFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/BaseFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/MainFragmentFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/MainFragmentFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/MainNavHostFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/MainNavHostFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/SearchFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SuperHeroDetailsExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/SuperHeroDetailsExtensions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SuperHeroDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/SuperHeroDetailsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/SuperHeroListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/SuperHeroListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/UIController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/UIController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/state/MainStateEvent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/state/MainStateEvent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/state/MainViewState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/state/MainViewState.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/viewmodel/Getters.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/viewmodel/Getters.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/viewmodel/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/viewmodel/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/presentation/main/viewmodel/Setters.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/presentation/main/viewmodel/Setters.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_details_superhero.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_superhero.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_superhero.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/search_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/search_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_main.xml" afterDir="false" />
     </list>
     <list id="f3e86660-94dc-4148-985e-55758f15985e" name="Revert &quot;Assigment done&quot;" comment="Revert &quot;Assigment done&quot;&#10;&#10;This reverts commit a328095f" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +99,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="HYF0218927006380" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_23_2" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -63,12 +125,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="navigationResourceFile" />
-        <option value="Kotlin Interface" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="valueResourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Class" />
         <option value="Kotlin File" />
       </list>
     </option>
@@ -112,11 +174,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="HYF0218927006380" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-16T11:37:14.923Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_2_API_23_2" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-08-20T16:16:42.944Z" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework/datasource" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/java/com/dimi/superheroapp/framework" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/anim" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
@@ -133,16 +195,18 @@
       <recent name="D:\Android Dev\My projects\interview-aleksandar-dimitrijevic\app\src\main\java\com\dimi\superheroapp\framework\datasource" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.dimi.superheroapp.framework.network.mappers" />
+      <recent name="com.dimi.superheroapp.business.domain.state" />
       <recent name="com.dimi.superheroapp.business.data.util" />
       <recent name="com.dimi.superheroapp.di" />
       <recent name="com.dimi.superheroapp.util" />
-      <recent name="com.dimi.superheroapp.framework.datasource.network.responses" />
-      <recent name="com.dimi.superheroapp.framework.presentation.main" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="com.dimi.superheroapp.framework.datasource" />
       <recent name="com.dimi.superheroapp.util" />
-      <recent name="com.dimi.superheroapp.framework.presentation.main" />
+      <recent name="com.dimi.superheroapp.business.interactors.main" />
+      <recent name="com.dimi.superheroapp.di.qualifiers" />
+      <recent name="com.dimi.superheroapp.presentation" />
+      <recent name="com.dimi.superheroapp.framework.datasource" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Android Dev\SuperHeroApp\app\src\main\res\drawable-v24" />
@@ -269,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597577630562</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="F">
+      <created>1597578107900</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1597578107900</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,7 +365,8 @@
     <MESSAGE value="Assignment done&#10; - added cache with room &#10; - filtering queries" />
     <MESSAGE value="Assignment done - update&#10; - fab button -&gt; scroll recyclerview up&#10; - minor changes" />
     <MESSAGE value="Assignment done - update&#10; - details fragments - landscape view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment done - update&#10; - details fragments - landscape view" />
+    <MESSAGE value="F" />
+    <option name="LAST_COMMIT_MESSAGE" value="F" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Notifications" timestamp="1597519745775">
@@ -309,42 +381,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="703" y="310" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597503993221" />
-    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1597571562070">
+    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1597956402818">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597571562070" />
-    <state x="514" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597574669059">
+    <state x="742" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597956402818" />
+    <state x="514" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597943099172">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="514" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597574669059" />
-    <state x="677" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597523577823">
+    <state x="514" y="436" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597943099172" />
+    <state x="677" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597961504312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="677" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597523577823" />
-    <state x="692" y="30" width="538" height="980" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1597512206420">
+    <state x="677" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597961504312" />
+    <state x="617" y="9" width="538" height="980" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog" timestamp="1597961699294">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="692" y="30" width="538" height="980" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597512206420" />
+    <state x="617" y="9" width="538" height="980" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597961699294" />
     <state x="641" y="348" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1597528483860">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="641" y="348" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1597528483860" />
-    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog" timestamp="1597514429760">
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog" timestamp="1597687200090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597514429760" />
-    <state x="540" y="275" key="AndroidCreateResourceFileDialog" timestamp="1597515316204">
+    <state x="540" y="275" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597687200090" />
+    <state x="540" y="275" key="AndroidCreateResourceFileDialog" timestamp="1597686648593">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="540" y="275" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597515316204" />
+    <state x="540" y="275" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597686648593" />
     <state x="818" y="327" key="AndroidCreateXmlResourceDialog" timestamp="1597538369460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="818" y="327" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597538369460" />
-    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597577626980">
+    <state x="612" y="14" key="CommitChangelistDialog2" timestamp="1597961985776">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577626980" />
+    <state x="612" y="14" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1597961985776" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1597578115430">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597578115430" />
     <state x="875" y="293" key="Downloadable.Font.Dialog.Size" timestamp="1597445340090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -357,22 +433,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="828" y="414" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597521335014" />
-    <state width="1860" height="532" key="GridCell.Tab.0.bottom" timestamp="1597578068871">
+    <state width="1877" height="243" key="GridCell.Tab.0.bottom" timestamp="1597961504387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="532" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
-    <state width="1860" height="532" key="GridCell.Tab.0.center" timestamp="1597578068871">
+    <state width="1877" height="243" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1597961504387" />
+    <state width="1877" height="243" key="GridCell.Tab.0.center" timestamp="1597961504387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="532" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
-    <state width="1860" height="532" key="GridCell.Tab.0.left" timestamp="1597578068871">
+    <state width="1877" height="243" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1597961504387" />
+    <state width="1877" height="243" key="GridCell.Tab.0.left" timestamp="1597961504386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="532" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
-    <state width="1860" height="532" key="GridCell.Tab.0.right" timestamp="1597578068871">
+    <state width="1877" height="243" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1597961504386" />
+    <state width="1877" height="243" key="GridCell.Tab.0.right" timestamp="1597961504387">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1860" height="532" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597578068871" />
+    <state width="1877" height="243" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1597961504387" />
     <state x="298" y="0" key="ScreenshotViewer.Dimensions" timestamp="1597493530405">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -381,14 +457,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1597521490038" />
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597577632950">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2" timestamp="1597578116997">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597577632950" />
-    <state x="776" y="298" key="chooseDestDirectoryDialog" timestamp="1597410183519">
+    <state x="552" y="249" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1597578116997" />
+    <state x="776" y="298" key="chooseDestDirectoryDialog" timestamp="1597943029888">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="298" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597410183519" />
+    <state x="776" y="298" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1597943029888" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1597520170425">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -1,7 +1,7 @@
 package com.dimi.superheroapp.di
 
-import com.dimi.superheroapp.framework.datasource.network.NetworkConstants
-import com.dimi.superheroapp.framework.datasource.network.api.MainApi
+import com.dimi.superheroapp.framework.network.NetworkConstants
+import com.dimi.superheroapp.framework.network.api.MainApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module

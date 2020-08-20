@@ -2,10 +2,9 @@ package com.dimi.superheroapp.business.data.cache.implementation
 
 import com.dimi.superheroapp.business.data.cache.abstraction.CacheDataSource
 import com.dimi.superheroapp.business.domain.model.SuperHero
-import com.dimi.superheroapp.framework.datasource.cache.abstraction.MainDaoService
 
 class CacheDataSourceImpl(
-    private val mainDaoService: MainDaoService
+    private val mainDaoService: CacheDataSource
 ) : CacheDataSource {
     override suspend fun insertSuperHero(superHero: SuperHero): Long {
         return mainDaoService.insertSuperHero(superHero)
@@ -21,6 +20,4 @@ class CacheDataSourceImpl(
     ): List<SuperHero> {
         return mainDaoService.searchSuperHeroes(query, filterAndOrder)
     }
-
-
 }

@@ -26,6 +26,8 @@ data class SuperHero(
     var expended: Boolean = false
 ) : Parcelable {
 
+
+
     override fun toString(): String {
         return "SuperHero(id=$id, name='$name', fullName='$fullName', alterEgos='$alterEgos', aliases=$aliases, placeOfBirth='$placeOfBirth', firstAppearance='$firstAppearance', publisher='$publisher', alignment='$alignment', image='$image')"
     }
