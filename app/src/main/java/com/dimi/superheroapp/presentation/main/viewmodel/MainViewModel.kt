@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.Flow
 class MainViewModel
 @ViewModelInject
 constructor(
-    private val mainUseCases: MainUseCases<MainViewState>,
+    private val mainUseCases: MainUseCases,
     private val editor: SharedPreferences.Editor,
     sharedPreferences: SharedPreferences,
     @Assisted private val savedStateHandle: SavedStateHandle

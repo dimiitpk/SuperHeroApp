@@ -8,22 +8,33 @@ import com.dimi.superheroapp.business.data.network.responses.SearchResponse
 import com.dimi.superheroapp.business.data.util.NetworkBoundResource
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.*
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SearchSuperHeroes<T : ViewState>(
+class SearchSuperHeroes(
     private val networkDataSource: NetworkDataSource,
     private val cacheDataSource: CacheDataSource
 ) {
+
+    /**
+     * @param viewState new ViewState object that will be used for sending a new data
+     * @param query requested search query
+     * @param filterAndOrder filter and order properties for room database
+     * @param stateEvent event name
+     *
+     * @return Flow<DataState<ViewState>>
+     */
     @FlowPreview
-    fun searchSuperHeroes(
-        viewState: T,
+    fun <ViewState : ViewStateInterface> searchSuperHeroes(
+        viewState: ViewState,
         query: String,
         filterAndOrder: String,
         stateEvent: StateEvent
-    ) = object : NetworkBoundResource<SearchResponse, List<SuperHero>, T>(
+    ) = object : NetworkBoundResource<SearchResponse, List<SuperHero>, ViewState>(
+        viewState = viewState,
         stateEvent = stateEvent,
         dispatcher = IO,
         apiCall = {
@@ -35,16 +46,14 @@ class SearchSuperHeroes<T : ViewState>(
     ) {
         override suspend fun updateCache(networkObject: SearchResponse): Response? {
 
-            var message =
-                SEARCH_SUPERHEROES_SUCCESSFUL
+            var message = SEARCH_SUPERHEROES_SUCCESSFUL
             var componentType: UIComponentType = UIComponentType.None()
             var messageType: MessageType = MessageType.Success()
             val heroList: ArrayList<SuperHero>
 
             if (networkObject.error.isNullOrEmpty()) {
                 if (networkObject.results.isEmpty()) {
-                    message =
-                        SEARCH_SUPERHEROES_FAILED
+                    message = SEARCH_SUPERHEROES_FAILED
                     componentType = UIComponentType.Toast()
                     messageType = MessageType.Error()
                 } else {
@@ -79,26 +88,6 @@ class SearchSuperHeroes<T : ViewState>(
                 message = message,
                 uiComponentType = componentType,
                 messageType = messageType
-            )
-        }
-
-        override fun handleCacheSuccess(
-            resultObj: List<SuperHero>,
-            cacheUpdateResponse: Response?,
-            stateEvent: StateEvent?
-        ): DataState<T> {
-
-            viewState.setData(ArrayList(resultObj))
-
-            return DataState.data(
-                response = cacheUpdateResponse
-                    ?: Response(
-                        message = SEARCH_SUPERHEROES_SUCCESSFUL,
-                        uiComponentType = UIComponentType.None(),
-                        messageType = MessageType.Success()
-                    ),
-                data = viewState,
-                stateEvent = stateEvent
             )
         }
     }.result
