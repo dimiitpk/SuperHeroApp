@@ -11,8 +11,6 @@ class NetworkResponseMapper
 @Inject constructor(private val networkMapper: NetworkMapper) : EntityMapper<NetworkSearchResponse, SearchResponse> {
 
     override fun mapFromEntity(entity: NetworkSearchResponse): SearchResponse {
-
-
         return SearchResponse(
             error = entity.error,
             response = entity.response,

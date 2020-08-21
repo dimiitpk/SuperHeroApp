@@ -6,7 +6,6 @@ import com.dimi.superheroapp.framework.cache.model.SuperHeroCacheEntity
 import com.dimi.superheroapp.util.ConvertUtils
 import javax.inject.Inject
 
-
 class CacheMapper
 @Inject
 constructor() : EntityMapper<SuperHeroCacheEntity, SuperHero> {

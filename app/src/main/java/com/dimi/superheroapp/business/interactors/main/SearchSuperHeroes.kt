@@ -20,7 +20,7 @@ class SearchSuperHeroes(
 ) {
 
     /**
-     * @param viewState new ViewState object that will be used for sending a new data
+     * @param viewState new blank ViewState object that will be used for sending a new data
      * @param query requested search query
      * @param filterAndOrder filter and order properties for room database
      * @param stateEvent event name
