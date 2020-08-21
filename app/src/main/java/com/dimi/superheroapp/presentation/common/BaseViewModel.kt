@@ -11,10 +11,12 @@ import kotlinx.coroutines.flow.flow
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-abstract class BaseViewModel<ViewState> constructor(private val savedStateHandle: SavedStateHandle) : ViewModel()
-{
-    private val _viewState: MutableLiveData<ViewState> = MutableLiveData()
+abstract class BaseViewModel<ViewState>
+constructor(
+    private val savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
+    private val _viewState: MutableLiveData<ViewState> = MutableLiveData()
     private var savingStateObserver: Observer<ViewState>
 
     init {
@@ -32,25 +34,24 @@ abstract class BaseViewModel<ViewState> constructor(private val savedStateHandle
         _viewState.observeForever(savingStateObserver)
     }
 
-    private val dataChannelManager: DataChannelManager<ViewState>
-            = object: DataChannelManager<ViewState>(){
+    private val dataChannelManager: DataChannelManager<ViewState> =
+        object : DataChannelManager<ViewState>() {
 
-        override fun handleNewData(data: ViewState) {
-            this@BaseViewModel.handleNewData(data)
+            override fun handleNewData(data: ViewState) {
+                this@BaseViewModel.handleNewData(data)
+            }
         }
-    }
 
     val viewState: LiveData<ViewState>
         get() = _viewState
 
-    val shouldDisplayProgressBar: LiveData<Boolean>
-            = dataChannelManager.shouldDisplayProgressBar
+    val shouldDisplayProgressBar: LiveData<Boolean> = dataChannelManager.shouldDisplayProgressBar
 
     val stateMessage: LiveData<StateMessage?>
         get() = dataChannelManager.messageStack.stateMessage
 
     // FOR DEBUGGING
-    fun getMessageStackSize(): Int{
+    fun getMessageStackSize(): Int {
         return dataChannelManager.messageStack.size
     }
 
@@ -63,7 +64,7 @@ abstract class BaseViewModel<ViewState> constructor(private val savedStateHandle
     fun emitStateMessageEvent(
         stateMessage: StateMessage,
         stateEvent: StateEvent
-    ) = flow{
+    ) = flow {
         emit(
             DataState.error<ViewState>(
                 response = stateMessage.response,
@@ -98,11 +99,11 @@ abstract class BaseViewModel<ViewState> constructor(private val savedStateHandle
         return viewState.value ?: initNewViewState()
     }
 
-    fun setViewState(viewState: ViewState){
+    fun setViewState(viewState: ViewState) {
         _viewState.value = viewState
     }
 
-    fun clearStateMessage(index: Int = 0){
+    fun clearStateMessage(index: Int = 0) {
         Log.d("BaseViewModel", "clearStateMessage")
         dataChannelManager.clearStateMessage(index)
     }
@@ -128,8 +129,8 @@ abstract class BaseViewModel<ViewState> constructor(private val savedStateHandle
     override fun onCleared() {
         super.onCleared()
 
-        if( _viewState.hasActiveObservers() )
-            _viewState.removeObserver( savingStateObserver )
+        if (_viewState.hasActiveObservers())
+            _viewState.removeObserver(savingStateObserver)
     }
 
 }

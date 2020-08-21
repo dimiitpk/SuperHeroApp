@@ -77,7 +77,7 @@ object AppModule {
     fun provideUseCases(
         @BusinessSource networkDataSource: NetworkDataSource,
         @BusinessSource cacheDataSource: CacheDataSource
-    ): MainUseCases<MainViewState> {
+    ): MainUseCases {
         return MainUseCases(
             SearchSuperHeroes(
                 networkDataSource, cacheDataSource

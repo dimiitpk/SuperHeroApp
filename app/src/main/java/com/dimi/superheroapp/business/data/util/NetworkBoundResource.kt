@@ -5,6 +5,7 @@ import com.dimi.superheroapp.business.data.cache.CacheResponseHandler
 import com.dimi.superheroapp.business.data.network.ApiResult
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR
 import com.dimi.superheroapp.business.domain.state.*
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 import com.dimi.superheroapp.util.GenericErrors.ERROR_UNKNOWN
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.FlowPreview
@@ -13,9 +14,10 @@ import kotlinx.coroutines.flow.flow
 
 
 @FlowPreview
-abstract class NetworkBoundResource<NetworkResponse, CacheResponse, ViewState>
+abstract class NetworkBoundResource<NetworkResponse, CacheResponse, ViewState : ViewStateInterface>
 constructor(
     private val dispatcher: CoroutineDispatcher,
+    private val viewState: ViewState,
     private val stateEvent: StateEvent,
     private val apiCall: suspend () -> NetworkResponse?,
     private val cacheCall: suspend () -> CacheResponse?
@@ -84,15 +86,18 @@ constructor(
         ) {
             override suspend fun handleSuccess(resultObj: CacheResponse): DataState<ViewState> {
 
-                return handleCacheSuccess(resultObj, cacheResponse, jobCompleteMarker)
+                viewState.setData(resultObj)
+                return DataState.data(
+                    response = cacheResponse,
+                    data = viewState,
+                    stateEvent = jobCompleteMarker
+                )
             }
         }.getResult()
 
     }
 
     abstract suspend fun updateCache(networkObject: NetworkResponse) : Response?
-
-    abstract fun handleCacheSuccess(resultObj: CacheResponse, cacheUpdateResponse: Response?, stateEvent: StateEvent?): DataState<ViewState>
 }
 
 
