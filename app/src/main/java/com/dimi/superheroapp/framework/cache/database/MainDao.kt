@@ -2,11 +2,11 @@ package com.dimi.superheroapp.framework.cache.database
 
 import androidx.room.*
 import com.dimi.superheroapp.framework.cache.model.SuperHeroCacheEntity
+import com.dimi.superheroapp.util.Constants.QUERY_FILTER_NAME
+import com.dimi.superheroapp.util.Constants.QUERY_FILTER_STRENGTH
+import com.dimi.superheroapp.util.Constants.QUERY_ORDER_ASC
+import com.dimi.superheroapp.util.Constants.QUERY_ORDER_DESC
 
-const val QUERY_ORDER_ASC : String = "ASC"
-const val QUERY_ORDER_DESC : String = "DESC"
-const val QUERY_FILTER_NAME = "name"
-const val QUERY_FILTER_STRENGTH = "strength"
 
 const val ORDER_BY_ASC_STRENGTH = QUERY_FILTER_STRENGTH + QUERY_ORDER_ASC
 const val ORDER_BY_DESC_STRENGTH = QUERY_FILTER_STRENGTH + QUERY_ORDER_DESC

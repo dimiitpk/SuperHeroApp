@@ -1,23 +1,19 @@
 package com.dimi.superheroapp.presentation.main.viewmodel
 
-import android.content.Intent
 import android.content.SharedPreferences
-import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.*
 import com.dimi.superheroapp.business.interactors.main.MainUseCases
 import com.dimi.superheroapp.util.PreferenceKeys.QUERY_FILTER
 import com.dimi.superheroapp.util.PreferenceKeys.QUERY_ORDER
-import com.dimi.superheroapp.framework.cache.database.QUERY_FILTER_NAME
-import com.dimi.superheroapp.framework.cache.database.QUERY_ORDER_ASC
 import com.dimi.superheroapp.presentation.main.state.MainStateEvent.*
 import com.dimi.superheroapp.presentation.main.state.MainViewState
 import com.dimi.superheroapp.presentation.common.BaseViewModel
 import com.dimi.superheroapp.presentation.main.state.MAIN_VIEW_STATE_BUNDLE_KEY
-import com.dimi.superheroapp.presentation.main.state.MainStateEvent
+import com.dimi.superheroapp.util.Constants.QUERY_FILTER_NAME
+import com.dimi.superheroapp.util.Constants.QUERY_ORDER_ASC
 import com.dimi.superheroapp.util.GenericErrors.SHORT_QUERY_ERROR
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview

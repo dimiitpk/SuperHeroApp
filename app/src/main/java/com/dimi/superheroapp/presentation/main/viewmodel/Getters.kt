@@ -2,8 +2,8 @@ package com.dimi.superheroapp.presentation.main.viewmodel
 
 import android.os.Parcelable
 import com.dimi.superheroapp.business.domain.model.SuperHero
-import com.dimi.superheroapp.framework.cache.database.QUERY_FILTER_NAME
-import com.dimi.superheroapp.framework.cache.database.QUERY_ORDER_DESC
+import com.dimi.superheroapp.util.Constants.QUERY_FILTER_NAME
+import com.dimi.superheroapp.util.Constants.QUERY_ORDER_DESC
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
