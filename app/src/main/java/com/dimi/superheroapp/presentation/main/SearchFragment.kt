@@ -9,11 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import android.widget.RadioGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,10 +31,10 @@ import com.dimi.superheroapp.presentation.common.fadeIn
 import com.dimi.superheroapp.presentation.common.fadeOut
 import com.dimi.superheroapp.presentation.common.gone
 import com.dimi.superheroapp.presentation.common.visible
-import com.dimi.superheroapp.presentation.main.state.MainStateEvent
 import com.dimi.superheroapp.presentation.main.viewmodel.*
-import com.dimi.superheroapp.util.SpacesItemDecoration
+import com.dimi.superheroapp.presentation.common.SpacesItemDecoration
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.layout_filter.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 
@@ -59,8 +56,8 @@ constructor(
         (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
         setHasOptionsMenu(true)
 
-
         swipe_refresh.setOnRefreshListener(this)
+
         initRecyclerView()
         subscribeObservers()
 
@@ -72,7 +69,7 @@ constructor(
 
     private fun subscribeObservers() {
 
-        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
+        viewModel.viewState.observe(viewLifecycleOwner, { viewState ->
 
             if (viewState != null) {
                 recyclerAdapter.apply {
@@ -98,11 +95,11 @@ constructor(
             }
         })
 
-        viewModel.shouldDisplayProgressBar.observe(viewLifecycleOwner, Observer {
+        viewModel.shouldDisplayProgressBar.observe(viewLifecycleOwner, {
             uiController.displayProgressBar(it)
         })
 
-        viewModel.stateMessage.observe(viewLifecycleOwner, Observer { stateMessage ->
+        viewModel.stateMessage.observe(viewLifecycleOwner, { stateMessage ->
             stateMessage?.let { message ->
 
                 if (message.response.message == SEARCH_SUPERHEROES_SUCCESSFUL) {
@@ -126,7 +123,8 @@ constructor(
 
         recycler_view.apply {
 
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager =
+                LinearLayoutManager(this@SearchFragment.context)
             val spaceDecoration = SpacesItemDecoration(15)
             removeItemDecoration(spaceDecoration)
             addItemDecoration(spaceDecoration)
@@ -151,70 +149,17 @@ constructor(
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        recycler_view.adapter = null
-    }
-
-    override fun onRefresh() {
-        onSearchQuery()
-        swipe_refresh.isRefreshing = false
-    }
-
-    private fun onSearchQuery() {
-        if (viewModel.getSearchQuery().isNotBlank() && viewModel.getSearchQuery().length >= 2) {
-            viewModel.setStateEvent(MainStateEvent.SearchHeroes()).let {
-                resetUI()
-            }
-        }
-    }
-
-    private fun resetUI() {
-        recycler_view.smoothScrollToPosition(0)
-        uiController.hideSoftKeyboard()
-        focusable_view.requestFocus()
-    }
-
     override fun onItemSelected(position: Int, item: SuperHero) {
         viewModel.setClickedSuperHero(item)
         if (!uiController.isDeviceTabletInLandscapeMode())
             findNavController().navigate(R.id.action_searchFragment_to_superHeroDetailsFragment)
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (viewModel.getSearchQuery().isNotBlank() && viewModel.getSuperHeroList()
-                .isNullOrEmpty()
-        ) {
-            viewModel.setStateEvent(MainStateEvent.SearchHeroes(clearLayoutManagerState = false))
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        saveLayoutManagerState()
-    }
-
-    private fun saveLayoutManagerState() {
-        recycler_view.layoutManager?.onSaveInstanceState()?.let { lmState ->
-            viewModel.setLayoutManagerState(lmState)
-        }
-    }
-
-    override fun restoreListPosition() {
-        viewModel.getLayoutManagerState()?.let { lmState ->
-            recycler_view?.layoutManager?.onRestoreInstanceState(lmState)
-        }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        // if (!uiController.isDeviceTabletInLandscapeMode()) {
         inflater.inflate(R.menu.search_menu, menu)
         initSearchView(menu)
-//        } else {
-//            menu.clear()
-//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -227,8 +172,20 @@ constructor(
                 showFilterDialog()
                 true
             }
+            R.id.action_send -> {
+                if (uiController.isDeviceTabletInLandscapeMode())
+                    sendSuperHeroAsMessage()
+                true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun sendSuperHeroAsMessage() {
+        val superHero = viewModel.getClickedSuperHero()
+        superHero?.let {
+            uiController.sendSuperHeroAsMessage(superHero)
+        } ?: viewModel.createSuperHeroIsNotSelectedMessage()
     }
 
     private fun initSearchView(menu: Menu) {
@@ -289,31 +246,30 @@ constructor(
             val filter = viewModel.getFilter()
             val order = viewModel.getOrder()
 
-            view.findViewById<RadioGroup>(R.id.filter_group).apply {
+            view.filter_group.apply {
                 when (filter) {
                     QUERY_FILTER_STRENGTH -> check(R.id.filter_strength)
                     QUERY_FILTER_NAME -> check(R.id.filter_name)
                 }
             }
 
-            view.findViewById<RadioGroup>(R.id.order_group).apply {
+            view.order_group.apply {
                 when (order) {
                     QUERY_ORDER_ASC -> check(R.id.filter_asc)
                     QUERY_ORDER_DESC -> check(R.id.filter_desc)
                 }
             }
 
-            view.findViewById<TextView>(R.id.positive_button).setOnClickListener {
-
+            view.positive_button.setOnClickListener {
                 val newFilter =
-                    when (view.findViewById<RadioGroup>(R.id.filter_group).checkedRadioButtonId) {
+                    when (view.filter_group.checkedRadioButtonId) {
                         R.id.filter_name -> QUERY_FILTER_NAME
                         R.id.filter_strength -> QUERY_FILTER_STRENGTH
                         else -> QUERY_FILTER_NAME
                     }
 
                 val newOrder =
-                    when (view.findViewById<RadioGroup>(R.id.order_group).checkedRadioButtonId) {
+                    when (view.order_group.checkedRadioButtonId) {
                         R.id.filter_desc -> QUERY_ORDER_DESC
                         else -> QUERY_ORDER_ASC
                     }
@@ -324,16 +280,65 @@ constructor(
                     setOrder(newOrder)
                 }
 
-                onSearchQuery()
+                searchQueryFromCache(filter = true)
 
                 dialog.dismiss()
             }
 
-            view.findViewById<TextView>(R.id.negative_button).setOnClickListener {
+            view.negative_button.setOnClickListener {
                 dialog.dismiss()
             }
 
             dialog.show()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        searchQueryFromCache()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        saveListPosition()
+    }
+
+    override fun saveListPosition() {
+        recycler_view.layoutManager?.onSaveInstanceState()?.let { lmState ->
+            viewModel.setLayoutManagerState(lmState)
+        }
+    }
+
+    override fun restoreListPosition() {
+        viewModel.getLayoutManagerState()?.let { lmState ->
+            recycler_view?.layoutManager?.onRestoreInstanceState(lmState)
+        }
+    }
+
+    private fun searchQueryFromCache(filter: Boolean = false) {
+        viewModel.searchSuperHeroesInCache(filter)
+        if (filter) resetUI()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        recycler_view.adapter = null
+    }
+
+    override fun onRefresh() {
+        onSearchQuery()
+        swipe_refresh.isRefreshing = false
+    }
+
+    private fun onSearchQuery() {
+        viewModel.searchSuperHeroes().let {
+            resetUI()
+        }
+    }
+
+    private fun resetUI() {
+        recycler_view.smoothScrollToPosition(0)
+        uiController.hideSoftKeyboard()
+        focusable_view.requestFocus()
     }
 }

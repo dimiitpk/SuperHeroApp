@@ -29,6 +29,12 @@ fun MainViewModel.getFilter(): String {
 
 @FlowPreview
 @ExperimentalCoroutinesApi
+fun MainViewModel.getClickedSuperHero(): SuperHero? {
+    return getCurrentViewStateOrNew().superHeroDetail
+}
+
+@FlowPreview
+@ExperimentalCoroutinesApi
 fun MainViewModel.getOrder(): String {
     return getCurrentViewStateOrNew().order
         ?: QUERY_ORDER_DESC

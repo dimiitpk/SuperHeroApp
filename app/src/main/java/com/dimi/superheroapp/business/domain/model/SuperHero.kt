@@ -61,4 +61,5 @@ data class SuperHero(
         if (stringBuilder.isEmpty()) stringBuilder.append("There are no known aliases for this superhero.")
         return stringBuilder.toString()
     }
+
 }

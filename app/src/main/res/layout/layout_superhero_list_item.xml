@@ -83,7 +83,7 @@
             android:id="@+id/expandableLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.5"
+            android:alpha="@integer/rotate_anim_alpha_start_value"
             android:background="@color/colorPrimary"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

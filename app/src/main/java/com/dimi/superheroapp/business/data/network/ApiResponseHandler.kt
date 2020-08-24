@@ -3,9 +3,11 @@ package com.dimi.superheroapp.business.data.network
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_DATA_NULL
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR
 import com.dimi.superheroapp.business.domain.state.*
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 
 
-abstract class ApiResponseHandler <ViewState, Data>(
+abstract class ApiResponseHandler <ViewState : ViewStateInterface, Data>(
+    private val viewState: ViewState,
     private val response: ApiResult<Data?>,
     private val stateEvent: StateEvent?
 ){
@@ -48,13 +50,14 @@ abstract class ApiResponseHandler <ViewState, Data>(
                     )
                 }
                 else{
-                    handleSuccess(resultObj = response.value)
+                    viewState.setData(response.value)
+                    handleSuccess(resultViewState = viewState)
                 }
             }
 
         }
     }
 
-    abstract suspend fun handleSuccess(resultObj: Data): DataState<ViewState>?
+    abstract suspend fun handleSuccess(resultViewState: ViewState): DataState<ViewState>?
 
 }

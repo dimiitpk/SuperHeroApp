@@ -1,6 +1,7 @@
 package com.dimi.superheroapp.presentation.main
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +12,7 @@ import androidx.fragment.app.FragmentManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onDismiss
 import com.dimi.superheroapp.R
+import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.MessageType
 import com.dimi.superheroapp.business.domain.state.Response
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
@@ -18,6 +20,7 @@ import com.dimi.superheroapp.business.domain.state.UIComponentType
 import com.dimi.superheroapp.util.PreferenceKeys
 import com.dimi.superheroapp.presentation.common.gone
 import com.dimi.superheroapp.presentation.common.visible
+import com.dimi.superheroapp.presentation.main.viewmodel.getClickedSuperHero
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
@@ -27,6 +30,7 @@ import dagger.hilt.android.components.ActivityComponent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import java.lang.StringBuilder
 import javax.inject.Inject
 
 
@@ -142,6 +146,28 @@ class MainActivity : AppCompatActivity(),
                 stateMessageCallback.removeMessageFromStack()
             }
         }
+    }
+
+    override fun sendSuperHeroAsMessage(superHero: SuperHero) {
+        val sb = StringBuilder()
+        superHero.let {
+            sb.append("Name: ${it.name}")
+            sb.append("\n")
+            sb.append("Full name: ${superHero.fullName}")
+            sb.append("\n")
+            sb.append("Place of birth: ${it.getValidPlaceOfBirth()}")
+            sb.append("\n")
+            sb.append("Publisher: ${it.getValidPublisher()}")
+        }
+
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, sb.toString())
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
     }
 
 

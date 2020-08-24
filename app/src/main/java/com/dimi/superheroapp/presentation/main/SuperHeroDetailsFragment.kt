@@ -1,16 +1,18 @@
 package com.dimi.superheroapp.presentation.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.dimi.superheroapp.R
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
 import com.dimi.superheroapp.presentation.common.fadeIn
+import com.dimi.superheroapp.presentation.main.viewmodel.getClickedSuperHero
 import kotlinx.android.synthetic.main.fragment_details_superhero.*
 import kotlinx.coroutines.*
 
@@ -37,7 +39,7 @@ constructor(
 
     private fun subscribeObservers() {
 
-        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
+        viewModel.viewState.observe(viewLifecycleOwner, { viewState ->
             if (viewState != null) {
                 viewState.superHeroDetail?.let { superHero ->
                     setSuperHeroProperties(superHero)
@@ -46,11 +48,11 @@ constructor(
             }
         })
 
-        viewModel.shouldDisplayProgressBar.observe(viewLifecycleOwner, Observer {
+        viewModel.shouldDisplayProgressBar.observe(viewLifecycleOwner, {
             uiController.displayProgressBar(it)
         })
 
-        viewModel.stateMessage.observe(viewLifecycleOwner, Observer { stateMessage ->
+        viewModel.stateMessage.observe(viewLifecycleOwner, { stateMessage ->
             stateMessage?.let { message ->
                 uiController.onResponseReceived(
                     response = message.response,
@@ -81,13 +83,33 @@ constructor(
         setupPowerProperties( superHero.power )
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        if( !uiController.isDeviceTabletInLandscapeMode() ) {
+            inflater.inflate(R.menu.send_menu, menu)
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if( !uiController.isDeviceTabletInLandscapeMode() ) {
-            if (item.itemId == android.R.id.home) {
-                findNavController().navigate(R.id.action_superHeroDetailsFragment_to_searchFragment)
-                return true
+            when( item.itemId ) {
+                android.R.id.home -> {
+                    findNavController().navigate(R.id.action_superHeroDetailsFragment_to_searchFragment)
+                    return true
+                }
+                R.id.action_send -> {
+                    sendSuperHeroAsMessage()
+                    return true
+                }
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun sendSuperHeroAsMessage() {
+        val superHero = viewModel.getClickedSuperHero()
+        superHero?.let {
+            uiController.sendSuperHeroAsMessage(superHero)
+        }?: viewModel.createSuperHeroIsNotSelectedMessage()
     }
 }

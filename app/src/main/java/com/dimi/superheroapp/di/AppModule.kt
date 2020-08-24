@@ -16,6 +16,7 @@ import com.dimi.superheroapp.business.data.network.abstraction.NetworkDataSource
 import com.dimi.superheroapp.business.data.network.implementation.NetworkDataSourceImpl
 import com.dimi.superheroapp.business.interactors.main.SearchSuperHeroes
 import com.dimi.superheroapp.business.interactors.main.MainUseCases
+import com.dimi.superheroapp.business.interactors.main.SuperHeroesFromCache
 import com.dimi.superheroapp.di.qualifiers.BusinessSource
 import com.dimi.superheroapp.di.qualifiers.FrameworkSource
 import com.dimi.superheroapp.util.PreferenceKeys
@@ -25,7 +26,6 @@ import com.dimi.superheroapp.framework.cache.mappers.CacheMapper
 import com.dimi.superheroapp.framework.network.api.MainApi
 import com.dimi.superheroapp.framework.network.implementation.MainApiServiceImpl
 import com.dimi.superheroapp.framework.network.mappers.NetworkResponseMapper
-import com.dimi.superheroapp.presentation.main.state.MainViewState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -81,7 +81,8 @@ object AppModule {
         return MainUseCases(
             SearchSuperHeroes(
                 networkDataSource, cacheDataSource
-            )
+            ),
+            SuperHeroesFromCache( cacheDataSource)
         )
     }
 

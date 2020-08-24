@@ -1,9 +1,12 @@
 package com.dimi.superheroapp.presentation.main.viewmodel
 
+import android.content.Intent
 import android.content.SharedPreferences
+import androidx.core.content.ContextCompat.startActivity
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
+import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.*
 import com.dimi.superheroapp.business.interactors.main.MainUseCases
 import com.dimi.superheroapp.util.PreferenceKeys.QUERY_FILTER
@@ -14,6 +17,7 @@ import com.dimi.superheroapp.presentation.main.state.MainStateEvent.*
 import com.dimi.superheroapp.presentation.main.state.MainViewState
 import com.dimi.superheroapp.presentation.common.BaseViewModel
 import com.dimi.superheroapp.presentation.main.state.MAIN_VIEW_STATE_BUNDLE_KEY
+import com.dimi.superheroapp.presentation.main.state.MainStateEvent
 import com.dimi.superheroapp.util.GenericErrors.SHORT_QUERY_ERROR
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -32,12 +36,14 @@ constructor(
 
     init {
         setFilter(
-            sharedPreferences.getString(QUERY_FILTER,
+            sharedPreferences.getString(
+                QUERY_FILTER,
                 QUERY_FILTER_NAME
             )
         )
         setOrder(
-            sharedPreferences.getString(QUERY_ORDER,
+            sharedPreferences.getString(
+                QUERY_ORDER,
                 QUERY_ORDER_ASC
             )
         )
@@ -60,6 +66,15 @@ constructor(
                     clearLayoutManagerState()
                 }
                 mainUseCases.searchSuperHeroes.searchSuperHeroes(
+                    viewState = MainViewState(),
+                    query = getSearchQuery(),
+                    filterAndOrder = getFilter() + getOrder(),
+                    stateEvent = stateEvent
+                )
+            }
+
+            is SearchHeroesFromCacheOnly -> {
+                mainUseCases.searchSuperHeroesFromCache.searchSuperHeroes(
                     viewState = MainViewState(),
                     query = getSearchQuery(),
                     filterAndOrder = getFilter() + getOrder(),
@@ -98,6 +113,20 @@ constructor(
         )
     }
 
+    fun createSuperHeroIsNotSelectedMessage() {
+        setStateEvent(
+            CreateStateMessageEvent(
+                stateMessage = StateMessage(
+                    response = Response(
+                        "SuperHero is not selected",
+                        UIComponentType.Toast(),
+                        MessageType.Error()
+                    )
+                )
+            )
+        )
+    }
+
     override fun onCleared() {
         super.onCleared()
         cancelActiveJobs()
@@ -117,5 +146,18 @@ constructor(
 
     override fun getUniqueViewStateIdentifier(): String {
         return MAIN_VIEW_STATE_BUNDLE_KEY
+    }
+
+    fun searchSuperHeroes() {
+        if (getSearchQuery().isNotBlank() && getSearchQuery().length >= 2) {
+            setStateEvent(SearchHeroes())
+        }
+    }
+
+    fun searchSuperHeroesInCache(filter: Boolean = false) {
+        if (getSearchQuery().isNotBlank())
+            if ( filter || getSuperHeroList().isNullOrEmpty())
+                setStateEvent(SearchHeroesFromCacheOnly())
+
     }
 }

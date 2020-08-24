@@ -5,10 +5,11 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.flow.*
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-abstract class DataChannelManager<ViewState> {
+abstract class DataChannelManager<ViewState : ViewStateInterface> {
 
     private var channelScope: CoroutineScope? = null
     private val stateEventManager: StateEventManager = StateEventManager()
@@ -105,7 +106,7 @@ abstract class DataChannelManager<ViewState> {
     }
 
     fun getChannelScope(): CoroutineScope {
-        return channelScope?: setupNewChannelScope(CoroutineScope(IO))
+        return channelScope ?: setupNewChannelScope(CoroutineScope(IO))
     }
 
     private fun setupNewChannelScope(coroutineScope: CoroutineScope): CoroutineScope{

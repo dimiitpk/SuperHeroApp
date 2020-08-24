@@ -6,12 +6,12 @@ import com.dimi.superheroapp.business.domain.state.*
 import com.dimi.superheroapp.util.GenericErrors
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.Flow
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 import kotlinx.coroutines.flow.flow
-
 
 @FlowPreview
 @ExperimentalCoroutinesApi
-abstract class BaseViewModel<ViewState>
+abstract class BaseViewModel<ViewState : ViewStateInterface>
 constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {

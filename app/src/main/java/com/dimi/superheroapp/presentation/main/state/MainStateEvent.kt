@@ -21,6 +21,18 @@ sealed class MainStateEvent: StateEvent {
         override fun shouldDisplayProgressBar() = true
     }
 
+    class SearchHeroesFromCacheOnly : MainStateEvent() {
+        override fun errorInfo(): String {
+            return "Error retrieving superheroes from cache."
+        }
+
+        override fun eventName(): String {
+            return "SearchHeroesFromCacheOnly"
+        }
+
+        override fun shouldDisplayProgressBar() = false
+    }
+
     class CreateStateMessageEvent(
         val stateMessage: StateMessage
     ): MainStateEvent(){

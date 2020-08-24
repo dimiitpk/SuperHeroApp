@@ -1,6 +1,5 @@
 package com.dimi.superheroapp.business.data.util
 
-
 import com.dimi.superheroapp.business.data.cache.CacheResponseHandler
 import com.dimi.superheroapp.business.data.network.ApiResult
 import com.dimi.superheroapp.business.data.network.NetworkErrors.NETWORK_ERROR
@@ -34,7 +33,7 @@ constructor(
         when(apiResult){
             is ApiResult.GenericError -> {
                 emit(
-                    buildError(
+                    buildError<ViewState>(
                         apiResult.errorMessage?.let { it }?: ERROR_UNKNOWN,
                         UIComponentType.Dialog(),
                         stateEvent
@@ -44,7 +43,7 @@ constructor(
 
             is ApiResult.NetworkError -> {
                 emit(
-                    buildError(
+                    buildError<ViewState>(
                         NETWORK_ERROR,
                         UIComponentType.Dialog(),
                         stateEvent
@@ -55,7 +54,7 @@ constructor(
             is ApiResult.Success -> {
                 if(apiResult.value == null){
                     emit(
-                        buildError(
+                        buildError<ViewState>(
                             ERROR_UNKNOWN,
                             UIComponentType.Dialog(),
                             stateEvent
@@ -81,15 +80,15 @@ constructor(
         }
 
         return object: CacheResponseHandler<ViewState, CacheResponse>(
+            viewState = viewState,
             response = cacheResult,
             stateEvent = jobCompleteMarker
         ) {
-            override suspend fun handleSuccess(resultObj: CacheResponse): DataState<ViewState> {
+            override suspend fun handleSuccess(resultViewState: ViewState): DataState<ViewState> {
 
-                viewState.setData(resultObj)
                 return DataState.data(
                     response = cacheResponse,
-                    data = viewState,
+                    data = resultViewState,
                     stateEvent = jobCompleteMarker
                 )
             }

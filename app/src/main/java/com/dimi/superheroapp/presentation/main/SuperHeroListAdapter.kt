@@ -3,6 +3,7 @@ package com.dimi.superheroapp.presentation.main
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -100,12 +101,10 @@ class SuperHeroListAdapter(
     fun submitList(
         superHeroList: List<SuperHero>?
     ) {
-        val newList = superHeroList?.toMutableList()
-
         val commitCallback = Runnable {
             interaction?.restoreListPosition()
         }
-        differ.submitList(newList, commitCallback)
+        differ.submitList(superHeroList, commitCallback)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -123,10 +122,20 @@ class SuperHeroListAdapter(
         private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(itemView) {
 
+        var animationFinished = true
+        private val rotateAnimDuration = itemView.resources.getInteger(R.integer.rotate_anim_duration).toLong()
+        companion object {
+
+            const val ALPHA_VISIBLE = 1f
+            const val ALPHA_INVISIBLE = 0f
+        }
+
         fun bind(item: SuperHero) = with(itemView) {
 
             itemView.setOnClickListener {
-                if (!item.expended) itemView.expandableLayout.alpha = 1f
+                if( !animationFinished ) return@setOnClickListener
+                animationFinished = false
+                if (!item.expended) itemView.expandableLayout.alpha = ALPHA_VISIBLE
                 checkRotateAnimation(itemView, context, item)
                 item.expended = !item.expended
             }
@@ -143,10 +152,10 @@ class SuperHeroListAdapter(
             itemView.aliases.text = item.getValidAliases()
 
             itemView.button_more_info.setOnClickListener {
+                interaction?.saveListPosition()
                 interaction?.onItemSelected(absoluteAdapterPosition, item)
             }
         }
-
 
         private fun checkRotateAnimation(itemView: View, context: Context?, item: SuperHero) {
 
@@ -158,21 +167,26 @@ class SuperHeroListAdapter(
                 var resId = R.anim.rotate_from_180_to_0
                 itemView.expandableLayout.apply {
 
-                    if (alpha == 0.5f && expandableLayout.visibility == View.GONE) {
+                    val typedValue = TypedValue()
+                    resources.getValue(R.integer.rotate_anim_alpha_start_value, typedValue, true)
+                    val alphaStartingPoint = typedValue.float
+
+                    if (alpha == alphaStartingPoint && expandableLayout.visibility == View.GONE) {
                         expandableLayout.visible()
-                        alpha = 1f
+                        alpha = ALPHA_VISIBLE
                         doRotation = true
                         resId = R.anim.rotate_from_0_to_180
                     } else {
-                        if (alpha == 1f) {
+                        if (alpha == ALPHA_VISIBLE) {
                             doRotation = true
                             animate()
-                                .alpha(0f)
-                                .setDuration(500)
+                                .alpha(ALPHA_INVISIBLE)
+                                .setDuration(rotateAnimDuration)
                                 .setListener(object : AnimatorListenerAdapter() {
                                     override fun onAnimationEnd(animation: Animator) {
                                         expandableLayout.gone()
-                                        alpha = 1f
+                                        animationFinished = true
+                                        alpha = ALPHA_VISIBLE
                                     }
                                 })
                         }
@@ -183,10 +197,17 @@ class SuperHeroListAdapter(
             } else {
 
                 itemView.expandableLayout.apply {
-                    if (alpha == 1f) {
-                        alpha = 0f
+                    if (alpha == ALPHA_VISIBLE) {
+                        alpha = ALPHA_INVISIBLE
                         expandableLayout.visible()
-                        animate().alpha(1f).setListener(null).duration = 500
+                        animate()
+                            .alpha(ALPHA_VISIBLE)
+                            .setListener(object : AnimatorListenerAdapter() {
+                                override fun onAnimationEnd(animation: Animator) {
+                                    animationFinished = true
+                                }
+                            })
+                            .duration = rotateAnimDuration
                         doRotation = true
                     }
                 }
@@ -201,5 +222,7 @@ class SuperHeroListAdapter(
         fun onItemSelected(position: Int, item: SuperHero)
 
         fun restoreListPosition()
+
+        fun saveListPosition()
     }
 }

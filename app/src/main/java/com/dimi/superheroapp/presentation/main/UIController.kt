@@ -1,5 +1,6 @@
 package com.dimi.superheroapp.presentation.main
 
+import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.Response
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
 
@@ -18,6 +19,10 @@ interface UIController {
     fun onResponseReceived(
         response: Response,
         stateMessageCallback: StateMessageCallback
+    )
+
+    fun sendSuperHeroAsMessage(
+        superHero: SuperHero
     )
 }
 

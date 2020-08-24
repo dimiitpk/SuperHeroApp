@@ -2,7 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <rotate
-        android:duration="500"
+        android:duration="@integer/rotate_anim_duration"
         android:fromDegrees="180"
         android:pivotX="50%"
         android:pivotY="50%"

@@ -1,4 +1,4 @@
-package com.dimi.superheroapp.util
+package com.dimi.superheroapp.presentation.common
 
 import android.graphics.Rect
 import android.view.View

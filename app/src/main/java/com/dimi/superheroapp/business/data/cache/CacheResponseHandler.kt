@@ -2,9 +2,11 @@ package com.dimi.superheroapp.business.data.cache
 
 import com.dimi.superheroapp.business.data.cache.CacheErrors.CACHE_DATA_NULL
 import com.dimi.superheroapp.business.domain.state.*
+import com.dimi.superheroapp.business.domain.state.ViewState as ViewStateInterface
 
 
-abstract class CacheResponseHandler <ViewState, Data>(
+abstract class CacheResponseHandler <ViewState : ViewStateInterface, Data>(
+    private val viewState: ViewState,
     private val response: CacheResult<Data?>,
     private val stateEvent: StateEvent?
 ){
@@ -35,13 +37,14 @@ abstract class CacheResponseHandler <ViewState, Data>(
                     )
                 }
                 else{
-                    handleSuccess(resultObj = response.value)
+                    viewState.setData(response.value)
+                    handleSuccess(resultViewState = viewState)
                 }
             }
 
         }
     }
 
-    abstract suspend fun handleSuccess(resultObj: Data): DataState<ViewState>?
+    abstract suspend fun handleSuccess(resultViewState: ViewState): DataState<ViewState>?
 
 }
