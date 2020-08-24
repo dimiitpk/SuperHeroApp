@@ -7,7 +7,6 @@ import com.dimi.superheroapp.util.Constants.QUERY_FILTER_STRENGTH
 import com.dimi.superheroapp.util.Constants.QUERY_ORDER_ASC
 import com.dimi.superheroapp.util.Constants.QUERY_ORDER_DESC
 
-
 const val ORDER_BY_ASC_STRENGTH = QUERY_FILTER_STRENGTH + QUERY_ORDER_ASC
 const val ORDER_BY_DESC_STRENGTH = QUERY_FILTER_STRENGTH + QUERY_ORDER_DESC
 const val ORDER_BY_ASC_NAME = QUERY_FILTER_NAME + QUERY_ORDER_ASC

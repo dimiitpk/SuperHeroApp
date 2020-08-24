@@ -24,7 +24,8 @@ data class MainViewState(
         for( data in any )
             when( data ) {
                 is ArrayList<*> -> {
-                    superHeroList = ArrayList( data.filterIsInstance<SuperHero>() )
+                    val result = data.filterIsInstance<SuperHero>()
+                    if( result.isNotEmpty() ) superHeroList = ArrayList( result )
                 }
                 else -> { }
             }
