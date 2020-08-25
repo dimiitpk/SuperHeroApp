@@ -67,6 +67,7 @@ constructor(
                     filterAndOrder = getFilter() + getOrder(),
                     stateEvent = stateEvent
                 )
+
             }
 
             is SearchHeroesFromCacheOnly -> {
@@ -95,7 +96,18 @@ constructor(
     override fun initNewViewState() =
         MainViewState()
 
-    fun createShortSearchQueryMessage() {
+    fun executeSearchQuery(query: String?) {
+        query?.let {
+            if (isValidQuery(it)) {
+                setQuery(it)
+                setStateEvent(SearchHeroes())
+            } else {
+                createShortSearchQueryMessage()
+            }
+        } ?: if( isValidQuery(getSearchQuery())) setStateEvent(SearchHeroes()) else return
+    }
+
+    private fun createShortSearchQueryMessage() {
         setStateEvent(
             CreateStateMessageEvent(
                 stateMessage = StateMessage(
@@ -144,15 +156,13 @@ constructor(
         return MAIN_VIEW_STATE_BUNDLE_KEY
     }
 
-    fun searchSuperHeroes() {
-        if (getSearchQuery().isNotBlank() && getSearchQuery().length >= 2) {
-            setStateEvent(SearchHeroes())
-        }
+    fun isValidQuery(query: String): Boolean {
+        return (query.isNotBlank() && query.length >= 2)
     }
 
     fun searchSuperHeroesInCache(filter: Boolean = false) {
         if (getSearchQuery().isNotBlank())
-            if ( filter || getSuperHeroList().isNullOrEmpty())
+            if (filter || getSuperHeroList().isNullOrEmpty())
                 setStateEvent(SearchHeroesFromCacheOnly())
 
     }

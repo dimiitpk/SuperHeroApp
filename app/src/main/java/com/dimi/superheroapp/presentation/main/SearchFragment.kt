@@ -3,12 +3,13 @@ package com.dimi.superheroapp.presentation.main
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.view.LayoutInflater
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
@@ -23,20 +24,18 @@ import com.dimi.superheroapp.R
 import com.dimi.superheroapp.business.domain.model.SuperHero
 import com.dimi.superheroapp.business.domain.state.StateMessageCallback
 import com.dimi.superheroapp.business.interactors.main.SearchSuperHeroes.Companion.SEARCH_SUPERHEROES_SUCCESSFUL
-import com.dimi.superheroapp.presentation.common.fadeIn
-import com.dimi.superheroapp.presentation.common.fadeOut
-import com.dimi.superheroapp.presentation.common.gone
-import com.dimi.superheroapp.presentation.common.visible
+import com.dimi.superheroapp.presentation.common.*
 import com.dimi.superheroapp.presentation.main.viewmodel.*
-import com.dimi.superheroapp.presentation.common.SpacesItemDecoration
 import com.dimi.superheroapp.util.Constants.QUERY_FILTER_NAME
 import com.dimi.superheroapp.util.Constants.QUERY_FILTER_STRENGTH
 import com.dimi.superheroapp.util.Constants.QUERY_ORDER_ASC
 import com.dimi.superheroapp.util.Constants.QUERY_ORDER_DESC
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.layout_filter.view.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.flow.*
+
 
 @ExperimentalCoroutinesApi
 @FlowPreview
@@ -49,6 +48,9 @@ constructor(
     private lateinit var searchView: SearchView
     private lateinit var recyclerAdapter: SuperHeroListAdapter
 
+    private lateinit var searchQueryJob : Job
+    val searchQueryFlow = MutableStateFlow("")
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -59,11 +61,28 @@ constructor(
         swipe_refresh.setOnRefreshListener(this)
 
         initRecyclerView()
+        setupFlowCollectors()
         subscribeObservers()
 
         pop_up_top_button.setOnClickListener {
             resetUI()
             uiController.expandAppBar()
+        }
+    }
+
+    private fun setupFlowCollectors() {
+        searchQueryJob = Job()
+        CoroutineScope(Main + searchQueryJob).launch {
+            searchQueryFlow
+                .debounce(1000)
+                .filter {
+                    return@filter (viewModel.isValidQuery(it) && (it != viewModel.getSearchQuery()))
+                }
+                .distinctUntilChanged()
+                .flowOn(Dispatchers.Default)
+                .collect {
+                    onSearchQuery(query = it, leaveSearchView = false)
+                }
         }
     }
 
@@ -196,15 +215,29 @@ constructor(
             searchView.apply {
                 setSearchableInfo(searchManager.getSearchableInfo(componentName))
                 maxWidth = Integer.MAX_VALUE
-                queryHint = "Search"
+                queryHint = resources.getString(R.string.search)
                 setIconifiedByDefault(false)
 
                 imeOptions = EditorInfo.IME_ACTION_SEARCH
                 isSubmitButtonEnabled = true
+
+                setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        return false
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        searchQueryFlow.value = newText
+                        return false
+                    }
+                })
             }
         }
 
+
+
         val searchPlate = searchView.findViewById(R.id.search_src_text) as EditText
+
         if (!viewModel.getSearchQuery().isBlank()) searchPlate.setText(viewModel.getSearchQuery())
         searchPlate.setOnEditorActionListener { v, actionId, _ ->
 
@@ -212,7 +245,7 @@ constructor(
                 || actionId == EditorInfo.IME_ACTION_SEARCH
             ) {
                 val searchQuery = v.text.trim().toString()
-                handleSearchConfirmed(searchQuery)
+                onSearchQuery(searchQuery)
             }
             true
         }
@@ -220,17 +253,7 @@ constructor(
         val searchButton = searchView.findViewById(R.id.search_go_btn) as View
         searchButton.setOnClickListener {
             val searchQuery = searchPlate.text.trim().toString()
-            handleSearchConfirmed(searchQuery)
-        }
-    }
-
-    private fun handleSearchConfirmed(searchQuery: String) {
-
-        if (searchQuery.length < 2) {
-            viewModel.createShortSearchQueryMessage()
-        } else {
-            viewModel.setQuery(searchQuery)
-            onSearchQuery()
+            onSearchQuery(searchQuery)
         }
     }
 
@@ -322,6 +345,7 @@ constructor(
 
     override fun onDestroyView() {
         super.onDestroyView()
+        searchQueryJob.cancel()
         recycler_view.adapter = null
     }
 
@@ -330,15 +354,16 @@ constructor(
         swipe_refresh.isRefreshing = false
     }
 
-    private fun onSearchQuery() {
-        viewModel.searchSuperHeroes().let {
-            resetUI()
-        }
+    private fun onSearchQuery(query: String? = null, leaveSearchView: Boolean = true) {
+        viewModel.executeSearchQuery(query = query)
+        resetUI(leaveSearchView)
     }
 
-    private fun resetUI() {
+    private fun resetUI(leaveSearchView: Boolean = true) {
         recycler_view.smoothScrollToPosition(0)
-        uiController.hideSoftKeyboard()
-        focusable_view.requestFocus()
+        if( leaveSearchView ) {
+            uiController.hideSoftKeyboard()
+            focusable_view.requestFocus()
+        }
     }
 }
